@@ -1,3 +1,6 @@
+﻿using BusifyAPI.Configurations;
+using BusifyAPI.Middlewares;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Logger
+LoggingConfig.ConfigureLogging(builder);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -15,6 +21,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapGet("/", () => "Hello Log and middleware");
+
+app.UseRequestLogging();
+app.UseExceptionHandling();
 
 app.UseHttpsRedirection();
 

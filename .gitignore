@@ -1,0 +1,25 @@
+# Ignore build output
+bin/
+obj/
+*.user
+*.vs
+*.cache
+.vscode/
+.idea/
+
+# Ignore dependencies
+packages/
+node_modules/
+
+# Ignore Logs & Cache
+logs/
+*.log
+*.bak
+*.cache
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore configuration files with sensitive data
+appsettings.json
